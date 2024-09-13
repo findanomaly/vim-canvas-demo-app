@@ -40,27 +40,6 @@ function App() {
 
   useEffect(() => {
     vimOs.hub.setActivationStatus("ENABLED");
-    vimOs.hub.pushNotification.show({
-      text: `Explore the <b>Vim Canvas Demo</b> app to view SDK capabilities, grab app code, and unlock opportunities`,
-      notificationId: crypto.randomUUID(),
-      actionButtons: {
-        leftButton: {
-          text: "View code",
-          buttonStyle: "LINK",
-          callback: () => {
-            setRedirectUrl("https://github.com/getvim/vim-canvas-demo-app");
-            setRedirectModal(true);
-          },
-          openAppButton: true,
-        },
-        rightButton: {
-          text: "Explore app",
-          buttonStyle: "PRIMARY",
-          openAppButton: true,
-          callback: () => {},
-        },
-      },
-    });
   }, [vimOs, setRedirectUrl]);
 
   const onRedirectModalChange = (open: boolean) => {
@@ -73,7 +52,6 @@ function App() {
   return (
     <div className="w-full h-full absolute top-0 left-0">
       <Navbar />
-
       <CollapsibleEntity entityTitle="User" entityIconUrl={userSvg}>
         <CollapsibleEntityContent>
           <SessionContextContent />
